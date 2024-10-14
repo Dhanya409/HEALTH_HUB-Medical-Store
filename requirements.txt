@@ -1,0 +1,12 @@
+Django
+djangorestframework
+Pillow
+requests
+reportlab
+django-allauth
+django-crispy-forms
+psycopg2 
+mysqlclient 
+python-decouple
+jazzmin
+
