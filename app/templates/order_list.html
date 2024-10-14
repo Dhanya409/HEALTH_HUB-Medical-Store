@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .order-details-btn {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .order-details-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .view-details {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order List</h1>
+        <ul>
+            {% for order in orders %}
+            <li>
+                <span>Order ID: {{ order.id }} - Status: {{ order.status }}</span>
+                <form action="{% url 'order_detail' order.id %}" method="get" class="view-details">
+                    <button type="submit" class="order-details-btn">View Details</button>
+                </form>
+            </li>
+            {% empty %}
+            <li>No orders found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'home' %}" class="btn go-home-btn" style="position: absolute; bottom: 10px; right: 10px; background-color: blue; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Go to Home</a>
+</body>
+</html>
+
+
+
+
+

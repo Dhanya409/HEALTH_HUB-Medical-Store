@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+
+{% block contend %}
+<style>
+  h1 {
+    text-align: center;
+    color: rgb(16, 15, 14); /* Primary color */
+    margin-top: 30px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+
+  .col {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 18rem;
+    border: 1px solid #ddd; /* Light border color */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-img-top {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #0c0a0a; /* Dark text color */
+  }
+
+  .card-text {
+    font-size: 1.2rem;
+    color: #090a0b; /* Price color */
+  }
+
+  .btn-primary {
+    background-color: #290e92; /* Primary color for buttons */
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  .shop-title {
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f8ff79;
+  }
+  
+  .shop-link {
+    padding: 0;
+    margin: 0;
+    display: none; /* Hide initially */
+  }
+  
+  .shop-link li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .shop-link li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+  }
+ 
+</style>
+<h1>Collections</h1>
+<div class="row">
+    {% for product in products %}
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+          <a href="{% url 'product_details' product.id %}">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+        </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title}}</h5>
+              <p class="card-text"> ₹{{ product.price }}</p>
+              <!-- <a href="{% url 'product_details' product.id %}" class="btn btn-primary">View Product</a> -->
+              <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+              <a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-primary">
+                <i class="fas fa-heart"></i>
+            </a>
+            </div>
+            
+          </div>
+        </div>  
+        
+    {% endfor %}    
+
+
+{% endblock %}
+
+
+

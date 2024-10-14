@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 60%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #64a8ed; /* Add nice outline */
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 6px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #64a8ed;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        .order-items td {
+            border: none;
+        }
+
+        .order-items th, .order-items td {
+            border: none;
+        }
+
+        .product-image {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1529dc;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #72b1e2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Detail</h1>
+        <p><strong>Order ID:</strong> {{ order.id }}</p>
+        <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <p><strong>Total Price:</strong> ₹{{ order.total_price }}</p>
+
+        <h2>Order Items</h2>
+        <table class="order-items">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order_item in order.orderitem_set.all %}
+                <tr>
+                    <td>{{ order_item.product.title }}</td>
+                    <td><img src="{{ order_item.product.product_image.url }}" alt="{{ order_item.product.title }}" class="product-image"></td>
+                    <td>{{ order_item.quantity }}</td>
+                    <td>₹{{ order_item.total_price }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No items in this order.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn">Go to Home</a> <!-- "Go to Home" button -->
+    </div>
+    
+</body>
+</html>
+
+
+

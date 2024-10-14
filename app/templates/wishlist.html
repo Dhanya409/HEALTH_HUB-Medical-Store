@@ -1,0 +1,78 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block banner_slider %}
+
+
+
+
+{% endblock %}
+
+
+{% block main-content %}
+<div class="container">
+  <h2 class="text-center">Your wishlist</h2>
+  <br><br>
+  
+ <div class="row container">
+    {% for item in wishlist %}
+  <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"
+    style="animation-duration: 1s; animation-delay: 0.6s; animation-name: none;">
+    <div class="apolomed">
+     
+      
+        <div class="apolo">
+          <img src="{{ item.product.product_image.url }}" width="250px" height="250px" class="img-responsive center-block" alt="">
+      
+          <div class="product-info" font-size="10">
+              <p>{{ item.product.image }}</p>
+              <a href="{% url 'product_details' item.product.id %}"><font size="+2">{{ item.product.title }}</font></a>
+              <p>₹ {{ item.product.price }} </p>
+              <!-- <p>{{ product.description }}</p> -->
+
+          </div>
+      </div>
+
+
+        <style>
+          .add-to-cart-button {
+            background-color: #4caf50; 
+            color: white;
+            padding: 5px 7px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+          }
+        
+          .add-to-cart-button:hover {
+            background-color: #3498db; 
+          }
+        </style>
+        
+       
+        
+        <div style="display: flex; gap: 10px;">
+          <form action="{% url 'add_to_cart' %}" method="get">
+              <button type="submit" class="add-to-cart-button" style="width: 100px;">Add to Cart</button>
+          </form>
+          <form action="{% url 'remove_from_wishlist' item.product.id %}" method="get">
+              <button type="submit" class="add-to-cart-button" style="width: 100px;">Remove</button>
+          </form>
+          <a href="{% url 'home' %}" class="btn go-home-btn" style="position: absolute; bottom: 10px; right: 10px; background-color: blue; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Go to Home</a>
+      </div>
+      
+        
+    </div>
+  </div>
+  {% empty %} 
+  <li>No products found.</li>
+{% endfor %}  
+  
+</div>  
+</div>
+{% endblock main-content %}

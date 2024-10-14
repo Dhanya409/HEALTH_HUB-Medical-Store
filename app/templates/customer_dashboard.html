@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0e88c5;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #e3e3e3;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 250px; /* Increase card width */
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            margin: 20px auto; /* Center horizontally */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #240d8a;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Customer Dashboard</h1>
+    </div>
+    <div class="dashboard">
+        <div class="card">
+            <i class="fas fa-shopping-bag icon"></i>
+            <h2>Order</h2>
+            <p>View and track your orders.</p>
+            <a href="{% url 'order_list' %}">View Orders</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-user icon"></i>
+            <h2>Profile</h2>
+            <p>Manage your profile information.</p>
+            <a href="{% url 'edit_customer' %}">Edit Profile</a>
+        </div>
+        <div class="card">
+            <i class="far fa-credit-card icon"></i>
+            <h2>Payment</h2>
+            <p>Manage your payment methods.</p>
+            <a href="#">View Payments</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-map-marker-alt icon"></i>
+            <h2>Address</h2>
+            <p>Manage your shipping addresses.</p>
+            <a href="{% url 'address_list' %}">View Addresses</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

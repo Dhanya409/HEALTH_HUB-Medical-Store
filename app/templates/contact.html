@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - Appolo Pharmacy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(212, 233, 245);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 1px solid #333;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        form {
+            background-color: rgb(212, 233, 245);
+            padding: 10px;
+            border: 1px solid #f0cdcd;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff0004;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <p>Thank you for choosing Appolo Pharmacy as your trusted source for all your pharmaceutical needs. We are dedicated to providing you with the highest level of service and care. Please don't hesitate to reach out to us with any questions or concerns.</p>
+
+    <h2>Contact Information:</h2>
+    <p><strong>Address:</strong><br>
+    Appolo Pharmacy <br>
+    London<br>
+    </p>
+
+    <p><strong>Phone:</strong><br>
+    Main: 0497 2345670<br>
+    Pharmacy: 9952312468</p>
+
+    <p><strong>Email:</strong><br>
+    General Inquiries: <a href="mailto:youremail@example.com">appoloemail@example.com</a><br>
+    Customer Support: <a href="mailto:appolo@support.com">appolo@support.com</a></p>
+
+    <h2>Business Hours:</h2>
+    <p>Monday - Friday: Opening Time 9.00 AM - Closing Time 10.00 PM<br>
+    Saturday: Opening Time  9.00 AM - Closing Time 10.00 PM<br>
+    Sunday: Opening Time 9.00 AM - Closing Time 10.00 PM</p>
+
+    <h2>Quick Contact Form:</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required pattern="^[a-zA-Z\s]+$" title="Only letters and spaces are allowed"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" pattern="^\d{10}$" title="Please enter a valid 10-digit phone number"><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+        <!-- <form method="post" action="{% url 'contact' %}"> -->
+        
+        <input type="submit">
+        </form>
+    </form>
+
+
+    
+    <h2>Social Media:</h2>
+    <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+    <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+    <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+</body>
+</html>

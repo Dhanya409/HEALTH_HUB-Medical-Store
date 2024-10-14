@@ -1,0 +1,61 @@
+<!-- seller_purchase_orders.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Orders</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5">Purchase Orders</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Date</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for purchase_order in purchase_orders %}
+                        <tr>
+                            <td>{{ purchase_order.id }}</td>
+                            <td>{{ purchase_order.PurchaseOrderDate }}</td>
+                            <td>₹{{ purchase_order.TotalAmount }}</td>
+                            <td><a href="{% url 'purchase_order_details' purchase_order.id %}">{{ purchase_order.Status }}</a></td>
+                            <td>
+                                {% if purchase_order.Status == '' %}
+                                <form method="post" action="{% url 'purchase_order_details' purchase_order.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" name="approve" class="btn btn-primary" style="background-color: green;">Approve</button>
+                                    <button type="submit" name="reject" class="btn btn-primary" style="background-color: red;">Reject</button>
+                                </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your JavaScript code here if needed -->
+</body>
+</html>
+
+
