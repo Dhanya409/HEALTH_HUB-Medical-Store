@@ -9,4 +9,4 @@ psycopg2
 mysqlclient 
 python-decouple
 django-jazzmin
-
+gunicorn
